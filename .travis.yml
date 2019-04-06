@@ -1,12 +1,19 @@
 language: node_js
- node_js: node
- cache:
-   directories:
-     - node_modules
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: OZCj9bE76EB7Xrk/UhuthM5T8iqhtsCticCUUDt+ZkmyUzMPqrxkYE1PxfvZo+8zXBE95bF+Zb4urf1aPxCuk2jLUQUyh/9fzYJKVVHsQEIlpvD+BUpTbtzsi33nRyqPnastsW2SMIZMc515mql+xs8hcoIENeuBBXVu1qbKXgoBWw3GTGHqZCw+zKimrYQg8RecDjs4VRafoVbMo2iH4grGAFTU0/lqGxxzHLfLpX+fuv8tJOcEVcQc/Kg3oVULwBvZl05Gvy6weqz41GK7FSI1azqLwLi4yFI2RVZyHkv+qwW20eumtNcLQhnZhtaNpGPo1SD8Yn74l8iR2+mi6dUu6Dm9Fthr0TP/HFsaCIkus1nCNB3XhEnfziIhefqqrtvAm31H1TOhY/B4f3s6nEam9TpsHhP5D05U6pCB/OYz9qzMaNOfcXR1B3gW+7+giBFf8gG4IfKmi60d6q5iHgPK0aLZ6gW0qJFHmrSEKdsrQua1xHh79iv7fjimv4jEHF8S+eCaKf0cyiof9uhE87npJXliUBAhe82uzPOKvA/hAERuTk0AFMGbkc1JAyMuP9q5r+nVesaXtVtTEdaxRL7uLcgZ2bANbOB9Jo5GQqbqIynkbucU5crTvedZAjSmI6XI4DnYMEL2Ndi3aXyoSJuaoFJcQEVG8m/i3J+hHCw=
+  app: money-in-sight
+  on:
+    repo: KliCk5000/money-in-sight-client
 notifications:
   email:
     recipients:
-      - klick5000@gmail.com
-      - coracardoni@gmail.com
+    - klick5000@gmail.com
+    - coracardoni@gmail.com
     on_success: always
     on_failure: always
