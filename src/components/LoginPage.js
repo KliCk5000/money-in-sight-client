@@ -9,7 +9,6 @@ const wireframe = (
         <Link to="/main">
           <input
             type="button"
-            onclick="location.href='/mainScreen.html';"
             value="Continue to main screen"
           />
         </Link>

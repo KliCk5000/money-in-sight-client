@@ -17,7 +17,6 @@ const wireframe = (
         <Link to="/login">
           <input
             type="button"
-            onclick="location.href='/login.html';"
             value="Sign in with Google"
           />
         </Link>
@@ -34,7 +33,6 @@ const wireframe = (
         <Link to="/login">
           <input
             type="button"
-            onclick="location.href='/login.html';"
             value="Sign in with Google"
           />
         </Link>
