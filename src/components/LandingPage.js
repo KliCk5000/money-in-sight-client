@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 const wireframe = (
   <div>
@@ -13,11 +14,13 @@ const wireframe = (
 
       <section>
         <p>Have some in-sight and stop blindly spending your money.</p>
-        <input
-          type="button"
-          onclick="location.href='/login.html';"
-          value="Sign in with Google"
-        />
+        <Link to="/login">
+          <input
+            type="button"
+            onclick="location.href='/login.html';"
+            value="Sign in with Google"
+          />
+        </Link>
       </section>
 
       <section>Step 1: Add a paycheck</section>
@@ -28,11 +31,13 @@ const wireframe = (
 
       <section>
         See for yourself how easy it is!
-        <input
-          type="button"
-          onclick="location.href='/login.html';"
-          value="Sign in with Google"
-        />
+        <Link to="/login">
+          <input
+            type="button"
+            onclick="location.href='/login.html';"
+            value="Sign in with Google"
+          />
+        </Link>
       </section>
     </main>
     <footer role="content-info">Created by Nick Dean</footer>

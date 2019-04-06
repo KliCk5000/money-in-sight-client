@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 
+import Calendar from './Calendar';
+
 const wireframe = (
   <div>
     <main role="main">
-      <header role="banner">
-        <h1>Calendar View</h1>
-      </header>
-
+      <Calendar />
       <section>
         <div>Rent - $1000</div>
         <div>Netflix - $15</div>
