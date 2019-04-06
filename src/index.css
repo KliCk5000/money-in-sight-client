@@ -12,3 +12,59 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* CSS for wireframe */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 20px;
+  color: #444;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.navigation,
+footer {
+  padding: 1% 0;
+  background-color: #aaa;
+}
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+header {
+  padding: 10% 0;
+}
+
+section {
+  min-height: 200px;
+  padding: 6% 0;
+  background-color: #bbb;
+}
+
+section:nth-child(even) {
+  background-color: #ddd;
+}
+
+.navigation ul {
+  margin: 0;
+  padding: 0;
+}
+
+.navigation li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+main {
+  margin-top: 15%;
+}
