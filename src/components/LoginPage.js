@@ -14,7 +14,7 @@ const wireframe = (
         </Link>
       </section>
     </main>
-    <footer role="content-info">Created by Nick Dean</footer>
+    <footer role="contentinfo">Created by Nick Dean</footer>
   </div>
 );
 

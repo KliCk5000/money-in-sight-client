@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import '../stylesheets/Calendar.css';
 
-import Days from './Days';
+// import Days from './Days';
 
 class Calendar extends Component {
   state = {

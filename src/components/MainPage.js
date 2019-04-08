@@ -29,7 +29,7 @@ const wireframe = (
         </form>
       </section>
     </main>
-    <footer role="content-info">Created by Nick Dean</footer>
+    <footer role="contentinfo">Created by Nick Dean</footer>
     <script src="script.js" />
   </div>
 );
