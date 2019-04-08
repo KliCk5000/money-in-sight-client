@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 
 import Calendar from './Calendar';
+import Transactions from './Transactions';
 
 const wireframe = (
   <div>
     <main role="main">
       <Calendar />
-      <section>
-        <div>Rent - $1000</div>
-        <div>Netflix - $15</div>
-        <div>Car Payment - $300</div>
-      </section>
+      <Transactions />
 
       <section>
         <form>

@@ -9,14 +9,14 @@ function Days() {
 
   for (let i = 0; i < 5; i++) {
     for (let i = 0; i < 7; i++) {
-      days.push(<div className="day">{currentDay}</div>);
+      days.push(<div className="day" key={'day'+i}>{currentDay}</div>);
       currentDay = currentDay + 1;
     }
-    rows.push(<div className="row">{days}</div>);
+    rows.push(<div className="row" key={'row'+i}>{days}</div>);
     days = [];
   }
 
-  return <div>{rows}</div>;
+  return <div className="day-container">{rows}</div>;
 }
 
 export default Days;

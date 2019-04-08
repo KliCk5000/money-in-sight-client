@@ -1,0 +1,11 @@
+.transactions-container {
+  background-color: lightblue;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30px;
+}
+
+.transactions-table {
+
+}

@@ -19,8 +19,7 @@ class Calendar extends Component {
     let dayJSX = dayNames.map((dayName) => {
       return <div className="dayOfWeek" key={dayName}>{dayName}</div>;
     });
-    console.log(dayJSX);
-    return <div>{dayJSX}</div>;
+    return <div className="dayOfWeek-container">{dayJSX}</div>;
   }
 
   render() {

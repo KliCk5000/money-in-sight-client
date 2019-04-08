@@ -38,15 +38,16 @@ footer {
   left: 0;
   right: 0;
   z-index: 10;
+  height: 50px;
 }
 
 header {
-  padding: 10% 0;
+  padding: 50px 0;
 }
 
 section {
   min-height: 200px;
-  padding: 6% 0;
+  padding: 50px 0;
   background-color: #bbb;
 }
 
@@ -62,9 +63,9 @@ section:nth-child(even) {
 .navigation li {
   list-style-type: none;
   display: inline-block;
-  padding: 0 20px;
+  padding: 0 1vw;
 }
 
 main {
-  margin-top: 15%;
+  margin-top: 50px;
 }
