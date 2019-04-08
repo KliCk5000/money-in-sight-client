@@ -1,0 +1,13 @@
+.calendar-container {
+  margin: 0 auto;
+  max-width: 20em;
+}
+
+.calendar {
+  border: 1px solid black;
+}
+
+.dayOfWeek {
+  display: inline-block;
+  padding: 5px;
+}
