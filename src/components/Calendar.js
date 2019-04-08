@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import '../stylesheets/Calendar.css';
 
-// import Days from './Days';
+import Days from './Days';
 
 class Calendar extends Component {
   state = {
@@ -25,16 +25,15 @@ class Calendar extends Component {
 
   render() {
     return (
-      <header role="banner">
-        <h1>Calendar View</h1>
+      <div>
         <div className="calendar-container">
-          Here is my calendar
           <div className="calendar">
             {this.renderHeader()}
             {this.renderDaysOfWeek()}
+            <Days />
           </div>
         </div>
-      </header>
+      </div>
     );
   }
 }
