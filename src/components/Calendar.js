@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import dateFns from 'date-fns';
 
 import '../stylesheets/Calendar.css';
 
@@ -6,20 +7,46 @@ import Days from './Days';
 
 class Calendar extends Component {
   state = {
-    month: 'April',
+    currentDate: new Date(),
+    selectedDate: new Date(),
   };
 
   renderHeader() {
-    return <div>{this.state.month}</div>;
+    const headerDateFormat = "MMMM YYYY";
+    return (
+    <div>
+      <div onClick={this.prevMonth}>Click here for Previous Month</div>
+      {dateFns.format(this.state.currentDate, headerDateFormat)}
+      <div onClick={this.nextMonth}>Click here for Next Month</div>
+    </div>);
   }
 
   renderDaysOfWeek() {
-    const dayNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+    const daysOfWeekFormat = "ddd";
+    let startDateOfTheWeek = dateFns.startOfWeek(this.state.currentDate);
+    let daysToRender = [];
 
-    let dayJSX = dayNames.map((dayName) => {
-      return <div className="dayOfWeek" key={dayName}>{dayName}</div>;
+    for (let day = 0; day < 7; day++) {
+      daysToRender.push(
+        <div className="dayOfWeek" key={`day${day}`}>
+          {dateFns.format(dateFns.addDays(startDateOfTheWeek, day), daysOfWeekFormat)}
+        </div>
+      );
+    }
+
+    return <div className="dayOfWeek-container">{daysToRender}</div>;
+  }
+
+  nextMonth = () => {
+    this.setState({
+      currentDate: dateFns.addMonths(this.state.currentDate, 1)
     });
-    return <div className="dayOfWeek-container">{dayJSX}</div>;
+  }
+
+  prevMonth = () => {
+    this.setState({
+      currentDate: dateFns.subMonths(this.state.currentDate, 1)
+    })
   }
 
   render() {
@@ -29,7 +56,10 @@ class Calendar extends Component {
           <div className="calendar">
             {this.renderHeader()}
             {this.renderDaysOfWeek()}
-            <Days />
+            <Days
+              currentDate={this.state.currentDate}
+              selectedDate={this.state.selectedDate}
+            />
           </div>
         </div>
       </div>

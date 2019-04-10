@@ -16,3 +16,7 @@
   flex-wrap: wrap;
   width: 100%;
 }
+
+.not-current-month {
+  background-color: lightslategray;
+}

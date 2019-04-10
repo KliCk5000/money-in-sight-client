@@ -1,18 +1,50 @@
 import React from 'react';
+import dateFns from 'date-fns';
 
 import '../stylesheets/Days.css';
 
-function Days() {
+function Days(props) {
+  let { currentDate, selectedDate } = props;
+  const monthStart = dateFns.startOfMonth(currentDate);
+  const monthEnd = dateFns.endOfMonth(currentDate);
+  const startDate = dateFns.startOfWeek(monthStart);
+  const endDate = dateFns.endOfWeek(monthEnd);
+
+
+  const dayFormat = 'D';
   let rows = [];
   let days = [];
-  let currentDay = 1;
+  let dayIteration = startDate;
+  let formatedDateToRender = '';
 
-  for (let i = 0; i < 5; i++) {
+  // Loop through add the Days that need to be rendered,
+  // and create proper <divs> for each day
+  while (dayIteration <= endDate) {
     for (let i = 0; i < 7; i++) {
-      days.push(<div className="day" key={'day'+i}>{currentDay}</div>);
-      currentDay = currentDay + 1;
+      formatedDateToRender = dateFns.format(dayIteration, dayFormat);
+      // const cloneDay = dayIteration;
+
+      // Is date not the current month?
+      let currentMonthCssClass = dateFns.isSameMonth(dayIteration, monthStart)
+        ? 'current-month'
+        : 'not-current-month';
+      days.push(
+        <div
+          className={`day ${currentMonthCssClass}`}
+          key={`day ${dayIteration}`}
+        >
+          {formatedDateToRender}
+        </div>,
+      );
+      dayIteration = dateFns.addDays(dayIteration, 1);
     }
-    rows.push(<div className="row" key={'row'+i}>{days}</div>);
+
+    rows.push(
+      <div className="row" key={`row day ${dayIteration}`}>
+        {days}
+      </div>,
+    );
+
     days = [];
   }
 
