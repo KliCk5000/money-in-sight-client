@@ -4,7 +4,7 @@ import dateFns from 'date-fns';
 import '../stylesheets/Days.css';
 
 function Days(props) {
-  let { currentDate, selectedDate } = props;
+  let { currentDate } = props;
   const monthStart = dateFns.startOfMonth(currentDate);
   const monthEnd = dateFns.endOfMonth(currentDate);
   const startDate = dateFns.startOfWeek(monthStart);

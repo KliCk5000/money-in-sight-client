@@ -1,29 +1,27 @@
 import React, { Component } from 'react';
 import dateFns from 'date-fns';
+import { connect } from 'react-redux';
+import { prevMonth, nextMonth } from '../actions';
 
 import '../stylesheets/Calendar.css';
 
 import Days from './Days';
 
 class Calendar extends Component {
-  state = {
-    currentDate: new Date(),
-    selectedDate: new Date(),
-  };
 
   renderHeader() {
-    const headerDateFormat = "MMMM YYYY";
+    const headerDateFormat = "MMM YYYY";
     return (
-    <div>
-      <div onClick={this.prevMonth}>Click here for Previous Month</div>
-      {dateFns.format(this.state.currentDate, headerDateFormat)}
-      <div onClick={this.nextMonth}>Click here for Next Month</div>
+    <div> 
+      <div onClick={() => this.props.prevMonth(this.props.currentDate)}>Click here for Previous Month</div>
+      {dateFns.format(this.props.currentDate, headerDateFormat)}
+      <div onClick={() => this.props.nextMonth(this.props.currentDate)}>Click here for Next Month</div>
     </div>);
   }
 
   renderDaysOfWeek() {
     const daysOfWeekFormat = "ddd";
-    let startDateOfTheWeek = dateFns.startOfWeek(this.state.currentDate);
+    let startDateOfTheWeek = dateFns.startOfWeek(this.props.currentDate);
     let daysToRender = [];
 
     for (let day = 0; day < 7; day++) {
@@ -37,18 +35,6 @@ class Calendar extends Component {
     return <div className="dayOfWeek-container">{daysToRender}</div>;
   }
 
-  nextMonth = () => {
-    this.setState({
-      currentDate: dateFns.addMonths(this.state.currentDate, 1)
-    });
-  }
-
-  prevMonth = () => {
-    this.setState({
-      currentDate: dateFns.subMonths(this.state.currentDate, 1)
-    })
-  }
-
   render() {
     return (
       <div>
@@ -57,8 +43,8 @@ class Calendar extends Component {
             {this.renderHeader()}
             {this.renderDaysOfWeek()}
             <Days
-              currentDate={this.state.currentDate}
-              selectedDate={this.state.selectedDate}
+              currentDate={this.props.currentDate}
+              selectedDate={this.props.selectedDate}
             />
           </div>
         </div>
@@ -67,4 +53,8 @@ class Calendar extends Component {
   }
 }
 
-export default Calendar;
+const mapStateToProps = (state) => {
+  return state.calendar;
+}
+
+export default connect(mapStateToProps, { prevMonth, nextMonth })(Calendar);
