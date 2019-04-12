@@ -56,7 +56,7 @@ class Calendar extends Component {
             {this.renderDaysOfWeek()}
             <Days
               currentDate={this.props.calendar.currentDate}
-              selectedDate={this.props.calendar.selectedDate}
+              bills={this.props.bills}
             />
           </div>
         </div>
