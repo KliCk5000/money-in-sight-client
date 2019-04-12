@@ -21,3 +21,7 @@
 .not-current-month {
   background-color: lightslategray;
 }
+
+.selected-date {
+  background-color: lightgreen;
+}

@@ -5,13 +5,18 @@ import rootReducer from './reducers';
 import fakeData from './fakeData.json';
 
 const preloadedState = {
-  "calendar": {
-    currentDate: new Date()
-  }
-}
+  calendar: {
+    currentDate: new Date(),
+    selectedDate: new Date(),
+  },
+};
 
 const fakePreloadedState = Object.assign({}, fakeData, preloadedState);
 
-const store = createStore(rootReducer, fakePreloadedState, composeWithDevTools());
+const store = createStore(
+  rootReducer,
+  fakePreloadedState,
+  composeWithDevTools(),
+);
 
 export default store;

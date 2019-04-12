@@ -8,8 +8,12 @@ class Days extends Component {
     return bills.filter((bill) => dateFns.isSameDay(bill.date, date));
   }
 
+  handleDateClick = (dateToParse) => {
+    return this.props.onDateClick(dateFns.parse(dateToParse))
+  }
+
   render() {
-    let { currentDate } = this.props;
+    let { currentDate, selectedDate } = this.props;
     const monthStart = dateFns.startOfMonth(currentDate);
     const monthEnd = dateFns.endOfMonth(currentDate);
     const startDate = dateFns.startOfWeek(monthStart);
@@ -25,13 +29,18 @@ class Days extends Component {
     // and create proper <divs> for each day
     while (dayIteration <= endDate) {
       for (let i = 0; i < 7; i++) {
+        let dateToParse = dayIteration;
         formatedDateToRender = dateFns.format(dayIteration, dayFormat);
         // const cloneDay = dayIteration;
 
         // Is date not the current month?
         let currentMonthCssClass = dateFns.isSameMonth(dayIteration, monthStart)
-          ? 'current-month'
+          ? ''
           : 'not-current-month';
+        // Is date currently selected?
+        let selectedDateCssClass = dateFns.isSameDay(dayIteration, selectedDate)
+          ? 'selected-date'
+          : '';
 
         // Does date have any bills associated with it?
         let billsForThisDay = this.reduceBillsForDate(
@@ -40,8 +49,9 @@ class Days extends Component {
         );
         days.push(
           <div
-            className={`day ${currentMonthCssClass}`}
+            className={`day ${currentMonthCssClass} ${selectedDateCssClass}`}
             key={`day ${dayIteration}`}
+            onClick={() => this.handleDateClick(dateToParse)}
           >
             {formatedDateToRender}
             {billsForThisDay.map((bill) => (

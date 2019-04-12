@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import dateFns from 'date-fns';
 import { connect } from 'react-redux';
-import { prevMonth, nextMonth } from '../actions';
+import { prevMonth, nextMonth, selectDate } from '../actions';
 
 import '../stylesheets/Calendar.css';
 
@@ -10,6 +10,7 @@ import Days from './Days';
 class Calendar extends Component {
   handlePrevMonthClick = () => this.props.prevMonth(this.props.calendar.currentDate);
   handleNextMonthClick = () => this.props.nextMonth(this.props.calendar.currentDate);
+  handleDateClick = (selectedDate) => this.props.selectDate(selectedDate);
 
   renderHeader() {
     const headerDateFormat = 'MMM YYYY';
@@ -56,7 +57,9 @@ class Calendar extends Component {
             {this.renderDaysOfWeek()}
             <Days
               currentDate={this.props.calendar.currentDate}
+              selectedDate={this.props.calendar.selectedDate}
               bills={this.props.bills}
+              onDateClick={this.handleDateClick}
             />
           </div>
         </div>
@@ -71,5 +74,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { prevMonth, nextMonth },
+  { prevMonth, nextMonth, selectDate },
 )(Calendar);

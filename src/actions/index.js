@@ -1,4 +1,4 @@
-import { NEXT_MONTH, PREV_MONTH } from './actionTypes';
+import { NEXT_MONTH, PREV_MONTH, SELECT_DATE } from './actionTypes';
 import dateFns from 'date-fns';
 
 export const prevMonth = (currentDate) => ({
@@ -12,5 +12,12 @@ export const nextMonth = (currentDate) => ({
   type: NEXT_MONTH,
   payload: {
     currentDate: dateFns.addMonths(currentDate, 1),
+  },
+});
+
+export const selectDate = (selectedDate) => ({
+  type: SELECT_DATE,
+  payload: {
+    selectedDate: selectedDate,
   },
 });

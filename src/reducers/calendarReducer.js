@@ -1,4 +1,4 @@
-import { PREV_MONTH, NEXT_MONTH } from '../actions/actionTypes';
+import { PREV_MONTH, NEXT_MONTH, SELECT_DATE } from '../actions/actionTypes';
 
 export default function(state = [], action) {
   switch (action.type) {
@@ -15,6 +15,13 @@ export default function(state = [], action) {
         ...state,
         currentDate,
       };
+    }
+    case SELECT_DATE: {
+      const { selectedDate } = action.payload;
+      return {
+        ...state,
+        selectedDate,
+      }
     }
     default:
       return state;
