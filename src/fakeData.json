@@ -24,6 +24,27 @@
       "amount": 300,
       "date": "April 10, 2019 00:00:00",
       "reoccuring": true
+    },
+    {
+      "id": 4,
+      "payee": "Test",
+      "amount": 300,
+      "date": "April 28, 2019 00:00:00",
+      "reoccuring": true
+    },
+    {
+      "id": 5,
+      "payee": "Cora rocks!",
+      "amount": 5000,
+      "date": "August 2, 2019 00:00:00",
+      "reoccuring": true
+    },
+    {
+      "id": 6,
+      "payee": "Birthday",
+      "amount": 300,
+      "date": "June 27, 2019 00:00:00",
+      "reoccuring": true
     }
   ]
 }
