@@ -8,27 +8,39 @@ import '../stylesheets/Calendar.css';
 import Days from './Days';
 
 class Calendar extends Component {
+  handlePrevMonthClick = () => this.props.prevMonth(this.props.currentDate);
+  handleNextMonthClick = () => this.props.nextMonth(this.props.currentDate);
 
   renderHeader() {
-    const headerDateFormat = "MMM YYYY";
+    const headerDateFormat = 'MMM YYYY';
     return (
-    <div> 
-      <div onClick={() => this.props.prevMonth(this.props.currentDate)}>Click here for Previous Month</div>
-      {dateFns.format(this.props.currentDate, headerDateFormat)}
-      <div onClick={() => this.props.nextMonth(this.props.currentDate)}>Click here for Next Month</div>
-    </div>);
+      <div className="header">
+        <div className="arrow-button left" onClick={this.handlePrevMonthClick}>
+          &#60;
+        </div>
+        <div className="month-name">
+          {dateFns.format(this.props.currentDate, headerDateFormat)}
+        </div>
+        <div className="arrow-button right" onClick={this.handleNextMonthClick}>
+          &#62;
+        </div>
+      </div>
+    );
   }
 
   renderDaysOfWeek() {
-    const daysOfWeekFormat = "ddd";
+    const daysOfWeekFormat = 'ddd';
     let startDateOfTheWeek = dateFns.startOfWeek(this.props.currentDate);
     let daysToRender = [];
 
     for (let day = 0; day < 7; day++) {
       daysToRender.push(
         <div className="dayOfWeek" key={`day${day}`}>
-          {dateFns.format(dateFns.addDays(startDateOfTheWeek, day), daysOfWeekFormat)}
-        </div>
+          {dateFns.format(
+            dateFns.addDays(startDateOfTheWeek, day),
+            daysOfWeekFormat,
+          )}
+        </div>,
       );
     }
 
@@ -55,6 +67,9 @@ class Calendar extends Component {
 
 const mapStateToProps = (state) => {
   return state.calendar;
-}
+};
 
-export default connect(mapStateToProps, { prevMonth, nextMonth })(Calendar);
+export default connect(
+  mapStateToProps,
+  { prevMonth, nextMonth },
+)(Calendar);
