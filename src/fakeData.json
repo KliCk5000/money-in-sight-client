@@ -1,0 +1,29 @@
+{
+  "user": {
+    "id": 456456456,
+    "username": "klick5000"
+  },
+  "bills": [
+    {
+      "id": 1,
+      "payee": "Rent",
+      "amount": 1000,
+      "date": "April 1 2019",
+      "reoccuring": true
+    },
+    {
+      "id": 2,
+      "payee": "Netflix",
+      "amount": 15,
+      "date": "April 5 2019",
+      "reoccuring": false
+    },
+    {
+      "id": 3,
+      "payee": "Car Payment",
+      "amount": 300,
+      "date": "April 10 2019",
+      "reoccuring": true
+    }
+  ]
+}

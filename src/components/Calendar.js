@@ -8,8 +8,8 @@ import '../stylesheets/Calendar.css';
 import Days from './Days';
 
 class Calendar extends Component {
-  handlePrevMonthClick = () => this.props.prevMonth(this.props.currentDate);
-  handleNextMonthClick = () => this.props.nextMonth(this.props.currentDate);
+  handlePrevMonthClick = () => this.props.prevMonth(this.props.calendar.currentDate);
+  handleNextMonthClick = () => this.props.nextMonth(this.props.calendar.currentDate);
 
   renderHeader() {
     const headerDateFormat = 'MMM YYYY';
@@ -19,7 +19,7 @@ class Calendar extends Component {
           &#60;
         </div>
         <div className="month-name">
-          {dateFns.format(this.props.currentDate, headerDateFormat)}
+          {dateFns.format(this.props.calendar.currentDate, headerDateFormat)}
         </div>
         <div className="arrow-button right" onClick={this.handleNextMonthClick}>
           &#62;
@@ -30,7 +30,7 @@ class Calendar extends Component {
 
   renderDaysOfWeek() {
     const daysOfWeekFormat = 'ddd';
-    let startDateOfTheWeek = dateFns.startOfWeek(this.props.currentDate);
+    let startDateOfTheWeek = dateFns.startOfWeek(this.props.calendar.currentDate);
     let daysToRender = [];
 
     for (let day = 0; day < 7; day++) {
@@ -55,8 +55,8 @@ class Calendar extends Component {
             {this.renderHeader()}
             {this.renderDaysOfWeek()}
             <Days
-              currentDate={this.props.currentDate}
-              selectedDate={this.props.selectedDate}
+              currentDate={this.props.calendar.currentDate}
+              selectedDate={this.props.calendar.selectedDate}
             />
           </div>
         </div>
@@ -66,7 +66,7 @@ class Calendar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return state.calendar;
+  return state;
 };
 
 export default connect(
