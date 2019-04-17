@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import dateFns from 'date-fns';
 
+import { filterBillsForDate } from '../utils/helperFunctions';
 import '../stylesheets/Days.css';
 
 class Days extends Component {
-  reduceBillsForDate(bills, date) {
-    return bills.filter((bill) => dateFns.isSameDay(bill.date, date));
-  }
-
   handleDateClick = (dateToParse) => {
     return this.props.onDateClick(dateFns.parse(dateToParse))
   }
@@ -43,7 +40,7 @@ class Days extends Component {
           : '';
 
         // Does date have any bills associated with it?
-        let billsForThisDay = this.reduceBillsForDate(
+        let billsForThisDay = filterBillsForDate(
           this.props.bills,
           dayIteration,
         );

@@ -23,5 +23,13 @@
 }
 
 .selected-date {
+  background-color: lightskyblue;
+}
+
+.green {
   background-color: lightgreen;
+}
+
+.red {
+  background-color: lightsalmon;
 }

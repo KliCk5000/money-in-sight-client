@@ -5,16 +5,26 @@
   },
   "bills": [
     {
+      "id": 0,
+      "payee": "Start",
+      "amount": 2000,
+      "type": "income",
+      "date": "April 1, 2019 00:00:00",
+      "reoccuring": true
+    },
+    {
       "id": 1,
       "payee": "Rent",
       "amount": 1000,
-      "date": "April 1, 2019 00:00:00",
+      "type": "expense",
+      "date": "April 3, 2019 00:00:00",
       "reoccuring": true
     },
     {
       "id": 2,
       "payee": "Netflix",
       "amount": 15,
+      "type": "expense",
       "date": "April 5, 2019 00:00:00",
       "reoccuring": false
     },
@@ -22,6 +32,7 @@
       "id": 3,
       "payee": "Car Payment",
       "amount": 300,
+      "type": "expense",
       "date": "April 10, 2019 00:00:00",
       "reoccuring": true
     },
@@ -29,6 +40,7 @@
       "id": 4,
       "payee": "Test",
       "amount": 300,
+      "type": "expense",
       "date": "April 28, 2019 00:00:00",
       "reoccuring": true
     },
@@ -36,6 +48,7 @@
       "id": 5,
       "payee": "Cora rocks!",
       "amount": 5000,
+      "type": "expense",
       "date": "August 2, 2019 00:00:00",
       "reoccuring": true
     },
@@ -43,6 +56,7 @@
       "id": 6,
       "payee": "Birthday",
       "amount": 300,
+      "type": "expense",
       "date": "June 27, 2019 00:00:00",
       "reoccuring": true
     }
