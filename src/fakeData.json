@@ -1,8 +1,4 @@
 {
-  "user": {
-    "id": 456456456,
-    "username": "klick5000"
-  },
   "bills": [
     {
       "id": 0,
@@ -16,6 +12,14 @@
       "id": 1,
       "payee": "Rent",
       "amount": 1000,
+      "type": "expense",
+      "date": "April 3, 2019 00:00:00",
+      "reoccuring": true
+    },
+    {
+      "id": 1.1,
+      "payee": "Hulu",
+      "amount": 10,
       "type": "expense",
       "date": "April 3, 2019 00:00:00",
       "reoccuring": true

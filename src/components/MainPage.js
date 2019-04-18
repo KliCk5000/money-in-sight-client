@@ -6,7 +6,7 @@ import Transactions from './Transactions';
 const wireframe = (
   <div>
     <main role="main">
-      <Calendar />
+      <Calendar className="calendar"/>
       <Transactions />
 
       <section>

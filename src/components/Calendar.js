@@ -5,7 +5,7 @@ import { prevMonth, nextMonth, selectDate } from '../actions';
 
 import '../stylesheets/Calendar.css';
 
-import Days from './Days';
+import DaysOfMonth from './DaysOfMonth';
 
 class Calendar extends Component {
   handlePrevMonthClick = () => this.props.prevMonth(this.props.calendar.currentDate);
@@ -55,9 +55,10 @@ class Calendar extends Component {
           <div className="calendar">
             {this.renderHeader()}
             {this.renderDaysOfWeek()}
-            <Days
+            <DaysOfMonth
               currentDate={this.props.calendar.currentDate}
               selectedDate={this.props.calendar.selectedDate}
+              balances={this.props.calendar.balances}
               bills={this.props.bills}
               onDateClick={this.handleDateClick}
             />

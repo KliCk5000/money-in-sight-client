@@ -12,29 +12,38 @@ class Transactions extends Component {
       this.props.bills,
       this.props.calendar.selectedDate,
     );
-    let tableEntries = billsForThisDay.map((bill) => {
-      return (
-        <tr key={bill.id}>
-          <td>{bill.payee}</td>
-          <td>{bill.amount}</td>
-          <td>{'temp'}</td>
-        </tr>
-      );
-    });
 
-    return (
-      <table className="transactions-table">
-        <caption>My transactions</caption>
-        <thead>
-          <tr>
-            <th>Payee</th>
-            <th>Amount</th>
-            <th>Running Balance</th>
+    if (billsForThisDay.length === 0) {
+      return (
+        <table className="transactions-table">
+          <caption>No transactions for today!</caption>
+        </table>
+      );
+    } else {
+      let tableEntries = billsForThisDay.map((bill) => {
+        return (
+          <tr key={bill.id}>
+            <td>{bill.payee}</td>
+            <td>{bill.amount}</td>
+            <td>{'temp'}</td>
           </tr>
-        </thead>
-        <tbody>{tableEntries}</tbody>
-      </table>
-    );
+        );
+      });
+
+      return (
+        <table className="transactions-table">
+          <caption>My transactions</caption>
+          <thead>
+            <tr>
+              <th>Payee</th>
+              <th>Amount</th>
+              <th>Running Balance</th>
+            </tr>
+          </thead>
+          <tbody>{tableEntries}</tbody>
+        </table>
+      );
+    }
   }
 
   render() {
@@ -53,11 +62,11 @@ class Transactions extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return state;
-};
+ const mapStateToProps = (state) => {
+   return state;
+ };
 
-export default connect(
-  mapStateToProps,
-  null,
-)(Transactions);
+ export default connect(
+   mapStateToProps,
+   null,
+ )(Transactions);
