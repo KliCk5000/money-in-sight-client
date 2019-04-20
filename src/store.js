@@ -8,6 +8,7 @@ const preloadedState = {
   calendar: {
     currentDate: new Date(),
     selectedDate: new Date(),
+    startingBalance: 0,
     balances: [{ date: new Date('April 1, 2019'), balance: 10 }],
   },
 };

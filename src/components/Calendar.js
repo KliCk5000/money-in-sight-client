@@ -58,6 +58,7 @@ class Calendar extends Component {
             <DaysOfMonth
               currentDate={this.props.calendar.currentDate}
               selectedDate={this.props.calendar.selectedDate}
+              startingBalance={this.props.calendar.startingBalance}
               balances={this.props.calendar.balances}
               bills={this.props.bills}
               onDateClick={this.handleDateClick}

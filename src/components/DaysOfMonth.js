@@ -11,21 +11,12 @@ import '../stylesheets/DaysOfMonth.css';
 
 class DaysOfMonth extends Component {
   getDaysToRender() {
-    let { currentDate, selectedDate, balances } = this.props;
+    // Setup all variables
+    let { currentDate, selectedDate, startingBalance } = this.props;
     const monthStart = dateFns.startOfMonth(currentDate);
     const monthEnd = dateFns.endOfMonth(currentDate);
     const startDate = dateFns.startOfWeek(monthStart);
     const endDate = dateFns.endOfWeek(monthEnd);
-    const monthlyBalance = balances.find((month) =>
-      dateFns.isSameMonth(month.date, monthStart),
-    );
-    let runningBalance = 0;
-    if (
-      monthlyBalance !== undefined &&
-      monthlyBalance.hasOwnProperty('balance')
-    ) {
-      runningBalance = monthlyBalance.balance;
-    }
 
     const dayFormat = 'D';
     let rows = [];
@@ -37,8 +28,8 @@ class DaysOfMonth extends Component {
     // and create proper <divs> for each day
     while (dayIteration <= endDate) {
       for (let i = 0; i < 7; i++) {
-        let dateToParse = dayIteration;
-        formatedDateToRender = dateFns.format(dayIteration, dayFormat);
+        let dateToParse = dayIteration; // Date used by click event
+        formatedDateToRender = dateFns.format(dayIteration, dayFormat); // Send to <Day />
 
         // Does date have any bills associated with it?
         let billsForThisDay = filterBillsForDate(
@@ -52,19 +43,23 @@ class DaysOfMonth extends Component {
         let endingBalance = 0;
         let dayComponentToRender = <Day />;
         let selectedDateCssClass = '';
+
+        let allBillsBeforeAndOnDate = filterAllBillsBeforeDate(
+          this.props.bills,
+          dateFns.addDays(dayIteration, 1),
+        );
+
+        endingBalance = calcEndOfDayBalance(
+          startingBalance,
+          allBillsBeforeAndOnDate,
+        );
+
+        // Check to see if its same month or not
         if (dateFns.isSameMonth(dayIteration, monthStart)) {
           currentMonthCssClass = '';
-          let allBills = filterAllBillsBeforeDate(
-            this.props.bills,
-            dateFns.addDays(dayIteration, 1),
-          );
-          endingBalance = calcEndOfDayBalance(0, allBills);
 
           // Is date currently selected?
-          selectedDateCssClass = dateFns.isSameDay(
-            dayIteration,
-            selectedDate,
-          )
+          selectedDateCssClass = dateFns.isSameDay(dayIteration, selectedDate)
             ? 'selected-date'
             : '';
           dayComponentToRender = (
@@ -76,6 +71,7 @@ class DaysOfMonth extends Component {
               billsForThisDay={billsForThisDay}
               previousDayBalance={beginningBalance}
               endOfDayBalance={endingBalance}
+              currentMonth={true}
             />
           );
         } else {
@@ -89,6 +85,7 @@ class DaysOfMonth extends Component {
               billsForThisDay={billsForThisDay}
               previousDayBalance={beginningBalance}
               endOfDayBalance={endingBalance}
+              currentMonth={false}
             />
           );
         }
@@ -106,7 +103,6 @@ class DaysOfMonth extends Component {
 
       days = [];
     }
-    console.log(runningBalance);
     return rows;
     //<div className="day-container">{rows}</div>;
   }

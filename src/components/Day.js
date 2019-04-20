@@ -24,25 +24,22 @@ class Day extends Component {
 
   // Ending Balance
   renderEndingBalance() {
-    return <div className="ending-balance">EOD ${this.state.endOfDayBalance}</div>;
+    return (
+      <div className="ending-balance">${this.state.endOfDayBalance}</div>
+    );
   }
 
   render() {
     // Before you render, check to see if the day is from the current month or not
-    if (this.props.className.search('not-current-month') !== -1) {
+    if (this.props.currentMonth === false) {
       return (
-        <div
-          className={this.props.className}
-        >
+        <div className={this.props.className}>
           {this.renderDate()}
         </div>
       );
     } else {
       return (
-        <div
-          className={this.props.className}
-          onClick={this.props.onClick}
-        >
+        <div className={this.props.className} onClick={this.props.onClick}>
           {this.renderDate()} {this.renderBills()} {this.renderEndingBalance()}
         </div>
       );
