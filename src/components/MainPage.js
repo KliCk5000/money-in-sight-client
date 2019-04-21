@@ -1,41 +1,42 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Calendar from './Calendar';
 import Transactions from './Transactions';
+import AddTransactionForm from './AddTransactionForm';
 
-const wireframe = (
-  <div>
-    <main role="main">
-      <Calendar className="calendar"/>
-      <Transactions />
-
-      <section>
-        <form>
-          <label>Add transaction</label>
-          <label>Payee</label>
-          <input type="text" />
-          <label>Income or Expense</label>
-          <select name="income/expense">
-            <option value="income">income/paycheck</option>
-            <option value="expense">expense/bill</option>
-          </select>
-          <label>Amount</label>
-          <input type="number" />
-          <label>Reoccuring</label>
-          <input type="checkbox" />
-        </form>
-      </section>
-    </main>
-    <footer role="contentinfo">Created by Nick Dean</footer>
-    <script src="script.js" />
-  </div>
-);
+import { addTransaction } from '../actions';
 
 class MainPage extends Component {
   state = {};
+
+  addTransactionSubmit = (values) => {
+    let selectedDate = this.props.calendar.selectedDate;
+    // We need to add the currently selected date to transaction
+    let completedTransaction = Object.assign({}, values, { date: selectedDate });
+
+    this.props.addTransaction(completedTransaction);
+  };
+
   render() {
-    return wireframe;
+    return (
+      <div>
+        <main role="main">
+          <Calendar className="calendar" />
+          <Transactions />
+          <AddTransactionForm onSubmit={this.addTransactionSubmit} />
+        </main>
+        <footer role="contentinfo">Created by Nick Dean</footer>
+      </div>
+    );
   }
 }
 
-export default MainPage;
+const mapStateToProps = (state) => {
+  return state;
+};
+
+export default connect(
+  mapStateToProps,
+  { addTransaction },
+)(MainPage);

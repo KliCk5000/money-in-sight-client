@@ -107,6 +107,10 @@ class DaysOfMonth extends Component {
     //<div className="day-container">{rows}</div>;
   }
 
+  componentDidUpdate() {
+
+  }
+
   handleDateClick = (dateToParse) => {
     return this.props.onDateClick(dateFns.parse(dateToParse));
   };
