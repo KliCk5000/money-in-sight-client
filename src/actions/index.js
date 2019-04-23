@@ -28,3 +28,10 @@ export const addTransaction = (transaction) => ({
     newTransaction: transaction,
   },
 });
+
+export const deleteTransaction = (transactionID) => ({
+  type: actionTypes.DELETE_TRANSACTION,
+  payload: {
+    deleteTransaction: transactionID,
+  },
+});
