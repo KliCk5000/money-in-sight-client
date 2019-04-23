@@ -16,8 +16,8 @@ class AddTransactionForm extends Component {
             <Field name="payee" component="input" type="text" />
           </div>
           <div>
-            <label htmlFor="incomeOrExpense">Income or Expense</label>
-            <Field name="incomeOrExpense" component="select">
+            <label htmlFor="type">Income or Expense</label>
+            <Field name="type" component="select">
               <option value="income">income/paycheck</option>
               <option value="expense">expense/bill</option>
             </Field>

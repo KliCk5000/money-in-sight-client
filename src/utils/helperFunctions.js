@@ -16,9 +16,7 @@ export function filterAllBillsBeforeDate(bills, date) {
 }
 
 export function filterAllBillsBeforeAndOnDate(bills, date) {
-  return bills.filter((bill) =>
-    dateFns.isBefore(bill.date, date),
-  );
+  return bills.filter((bill) => dateFns.isBefore(bill.date, date));
 }
 
 // getBalanceForDate
@@ -27,10 +25,15 @@ export function filterAllBillsBeforeAndOnDate(bills, date) {
 // date is specific date you are wanting to run the function
 export function calcEndOfDayBalance(startingBalance = 0, bills) {
   let runningTotal = startingBalance;
-  bills.forEach((bill) =>
-    bill.type === 'income'
-      ? (runningTotal += bill.amount)
-      : (runningTotal -= bill.amount),
-  );
+  bills.forEach((bill) => {
+    if (bill.type === 'income') {
+      return (runningTotal += Number(bill.amount));
+    } else if (bill.type === 'expense') {
+      return (runningTotal -= Number(bill.amount));
+    } else {
+      console.log('Error: invalid type of bill');
+      return 0;
+    }
+  });
   return runningTotal;
 }
