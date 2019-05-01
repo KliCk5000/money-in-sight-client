@@ -14,12 +14,9 @@ const wireframe = (
 
       <section>
         <p>Have some in-sight and stop blindly spending your money.</p>
-        <Link to="/login">
-          <input
-            type="button"
-            value="Sign in with Google"
-          />
-        </Link>
+        <a href={process.env.REACT_APP_API_URL}>
+          <input type="button" value="Sign in with Google" />
+        </a>
       </section>
 
       <section>Step 1: Add a paycheck</section>
@@ -31,10 +28,7 @@ const wireframe = (
       <section>
         See for yourself how easy it is!
         <Link to="/login">
-          <input
-            type="button"
-            value="Sign in with Google"
-          />
+          <input type="button" value="Sign in with Google" />
         </Link>
       </section>
     </main>

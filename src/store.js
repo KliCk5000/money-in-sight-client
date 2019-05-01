@@ -15,6 +15,8 @@ const preloadedState = {
 
 const fakePreloadedState = Object.assign({}, fakeData, preloadedState);
 
+console.log(fakePreloadedState);
+
 const store = createStore(
   rootReducer,
   fakePreloadedState,
