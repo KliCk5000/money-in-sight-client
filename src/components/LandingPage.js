@@ -14,7 +14,7 @@ const wireframe = (
 
       <section>
         <p>Have some in-sight and stop blindly spending your money.</p>
-        <a href={process.env.REACT_APP_API_URL}>
+        <a href={`${process.env.REACT_APP_API_URL}/auth/google`}>
           <input type="button" value="Sign in with Google" />
         </a>
       </section>
