@@ -18,7 +18,7 @@ class DaysOfMonth extends Component {
     const startDate = dateFns.startOfWeek(monthStart);
     const endDate = dateFns.endOfWeek(monthEnd);
 
-    const dayFormat = "D";
+    const dayFormat = "d";
     let rows = [];
     let days = [];
     let dayIteration = startDate;

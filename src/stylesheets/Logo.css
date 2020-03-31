@@ -1,0 +1,16 @@
+.logo {
+  display: inline-block;
+}
+
+.logo-image {
+  height: 4em;
+  vertical-align: middle;
+}
+
+.logo-name {
+  color: #000;
+  font-family: "Lilita One", cursive;
+  font-weight: 200;
+  font-size: 3em;
+  vertical-align: middle;
+}

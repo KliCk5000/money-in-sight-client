@@ -15,7 +15,7 @@ class Calendar extends Component {
   handleDateClick = selectedDate => this.props.selectDate(selectedDate);
 
   renderHeader() {
-    const headerDateFormat = "MMM YYYY";
+    const headerDateFormat = "MMM yyyy";
     return (
       <div className="header">
         <div className="arrow-button left" onClick={this.handlePrevMonthClick}>

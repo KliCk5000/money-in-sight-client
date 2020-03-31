@@ -1,5 +1,5 @@
-header {
-  background-image: url('../images/banner.jpg');
+.main-header {
+  background-image: url("../images/banner.jpg");
   background-size: cover;
   background-position: left;
   background-attachment: fixed;
@@ -9,8 +9,8 @@ header {
   min-height: 600px;
 }
 
-header::before {
-  content: '';
+.main-header::before {
+  content: "";
   background: rgba(75, 75, 93, 0.85);
   position: absolute;
   width: 100%;
@@ -19,18 +19,18 @@ header::before {
   left: 0;
 }
 
-header h1,
-header p {
+.main-header h1,
+.main-header p {
   color: white;
 }
 
-header input[type="button"] {
+main input[type="button"] {
   box-shadow: inset 0 0 0 3px #6cc091;
   border: 0;
   border-radius: 20px;
   cursor: pointer;
   display: inline-block;
-  font-size: .75em;
+  font-size: 0.75em;
   font-weight: 400;
   height: 3.75em;
   line-height: 3.85em;
@@ -45,5 +45,5 @@ header input[type="button"] {
 
 .bannerText {
   position: relative;
-  margin-top: 10%
+  margin-top: 10%;
 }

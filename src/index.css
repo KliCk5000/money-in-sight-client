@@ -24,9 +24,15 @@ body {
   color: #444;
   text-align: center;
   line-height: 1.5;
+  background-image: url("./images/always-grey.png");
 }
 
-.navigation,
+footer {
+  padding: 1% 0;
+  background-color: #aaa;
+}
+
+/* .navigation,
 footer {
   padding: 1% 0;
   background-color: #aaa;
@@ -39,11 +45,7 @@ footer {
   right: 0;
   z-index: 10;
   height: 50px;
-}
-
-header {
-  padding: 50px 0;
-}
+} */
 
 section {
   min-height: 200px;
@@ -53,17 +55,6 @@ section {
 
 section:nth-child(even) {
   background-color: #ddd;
-}
-
-.navigation ul {
-  margin: 0;
-  padding: 0;
-}
-
-.navigation li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 0 1vw;
 }
 
 main {

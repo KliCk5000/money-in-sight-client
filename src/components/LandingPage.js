@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import '../stylesheets/LandingPage.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "../stylesheets/LandingPage.css";
 
 const wireframe = (
   <div>
     <main role="main">
-      <header role="banner">
+      <div role="banner" className="main-header">
         <div className="bannerText">
           <h1>Welcome to Money In Sight</h1>
           <p>
@@ -16,7 +16,7 @@ const wireframe = (
             <input type="button" value="Sign in with Google" />
           </a>
         </div>
-      </header>
+      </div>
 
       <section>
         <p>Have some in-sight and stop blindly spending your money.</p>

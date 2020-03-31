@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-import Nav from './Nav';
-import LandingPage from './LandingPage';
-import LoginPage from './LoginPage';
-import MainPage from './MainPage';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Header from "./Header";
+import LandingPage from "./LandingPage";
+import LoginPage from "./LoginPage";
+import MainPage from "./MainPage";
 
 class App extends Component {
   state = {};
@@ -12,7 +11,7 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <Nav />
+          <Header />
           <Route exact path="/" component={LandingPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/main" component={MainPage} />

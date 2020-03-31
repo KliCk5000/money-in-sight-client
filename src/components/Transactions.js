@@ -62,7 +62,7 @@ class Transactions extends Component {
   }
 
   render() {
-    const selectedDateFormat = "MMMM Do, YYYY";
+    const selectedDateFormat = "MMMM Do, yyyy";
     const selectedDate = dateFns.format(
       this.props.calendar.selectedDate,
       selectedDateFormat
