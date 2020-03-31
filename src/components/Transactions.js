@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
-import dateFns from 'date-fns';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import * as dateFns from "date-fns";
+import { connect } from "react-redux";
 
-import { filterBillsForDate, calcEndOfDayBalance, filterAllBillsBeforeDate } from '../utils/helperFunctions';
-import { deleteTransaction } from '../actions'
+import {
+  filterBillsForDate,
+  calcEndOfDayBalance,
+  filterAllBillsBeforeDate
+} from "../utils/helperFunctions";
+import { deleteTransaction } from "../actions";
 
-import '../stylesheets/Transactions.css';
+import "../stylesheets/Transactions.css";
 
 class Transactions extends Component {
   handleDeleteTransaction(value) {
@@ -15,7 +19,7 @@ class Transactions extends Component {
   renderTableForDate() {
     let billsForThisDay = filterBillsForDate(
       this.props.bills,
-      this.props.calendar.selectedDate,
+      this.props.calendar.selectedDate
     );
 
     if (billsForThisDay.length === 0) {
@@ -25,14 +29,16 @@ class Transactions extends Component {
         </table>
       );
     } else {
-      let tableEntries = billsForThisDay.map((bill) => {
+      let tableEntries = billsForThisDay.map(bill => {
         return (
           <tr key={bill.id}>
             <td>{bill.payee}</td>
             <td>{bill.amount}</td>
             {/* <td>{(bill.amount - balance)}</td> */}
             <td>
-              <button onClick={() => this.handleDeleteTransaction(bill.id)}>Delete</button>
+              <button onClick={() => this.handleDeleteTransaction(bill.id)}>
+                Delete
+              </button>
             </td>
           </tr>
         );
@@ -56,29 +62,31 @@ class Transactions extends Component {
   }
 
   render() {
-    const selectedDateFormat = 'MMMM Do, YYYY';
+    const selectedDateFormat = "MMMM Do, YYYY";
     const selectedDate = dateFns.format(
       this.props.calendar.selectedDate,
-      selectedDateFormat,
+      selectedDateFormat
     );
     const startingBalance = this.props.calendar.startingBalance;
-    const runningBills = filterAllBillsBeforeDate(this.props.bills, dateFns.addDays(this.props.calendar.selectedDate, 1));
+    const runningBills = filterAllBillsBeforeDate(
+      this.props.bills,
+      dateFns.addDays(this.props.calendar.selectedDate, 1)
+    );
     const endingBalance = calcEndOfDayBalance(startingBalance, runningBills);
 
     return (
       <div className="transactions-container">
-        <div>Currently Selected Date - {selectedDate} - Balance: ${endingBalance}</div>
+        <div>
+          Currently Selected Date - {selectedDate} - Balance: ${endingBalance}
+        </div>
         {this.renderTableForDate()}
       </div>
     );
   }
 }
 
- const mapStateToProps = (state) => {
-   return state;
- };
+const mapStateToProps = state => {
+  return state;
+};
 
- export default connect(
-   mapStateToProps,
-   { deleteTransaction },
- )(Transactions);
+export default connect(mapStateToProps, { deleteTransaction })(Transactions);

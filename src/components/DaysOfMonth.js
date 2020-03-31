@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import dateFns from 'date-fns';
+import React, { Component } from "react";
+import * as dateFns from "date-fns";
 
 import {
   filterBillsForDate,
   calcEndOfDayBalance,
-  filterAllBillsBeforeDate,
-} from '../utils/helperFunctions';
-import Day from './Day';
-import '../stylesheets/DaysOfMonth.css';
+  filterAllBillsBeforeDate
+} from "../utils/helperFunctions";
+import Day from "./Day";
+import "../stylesheets/DaysOfMonth.css";
 
 class DaysOfMonth extends Component {
   getDaysToRender() {
@@ -18,11 +18,11 @@ class DaysOfMonth extends Component {
     const startDate = dateFns.startOfWeek(monthStart);
     const endDate = dateFns.endOfWeek(monthEnd);
 
-    const dayFormat = 'D';
+    const dayFormat = "D";
     let rows = [];
     let days = [];
     let dayIteration = startDate;
-    let formatedDateToRender = '';
+    let formatedDateToRender = "";
 
     // Loop through add the Days that need to be rendered,
     // and create proper <divs> for each day
@@ -34,34 +34,34 @@ class DaysOfMonth extends Component {
         // Does date have any bills associated with it?
         let billsForThisDay = filterBillsForDate(
           this.props.bills,
-          dayIteration,
+          dayIteration
         );
 
         // Is date not the current month?
-        let currentMonthCssClass = '';
+        let currentMonthCssClass = "";
         let beginningBalance = 0;
         let endingBalance = 0;
         let dayComponentToRender = <Day />;
-        let selectedDateCssClass = '';
+        let selectedDateCssClass = "";
 
         let allBillsBeforeAndOnDate = filterAllBillsBeforeDate(
           this.props.bills,
-          dateFns.addDays(dayIteration, 1),
+          dateFns.addDays(dayIteration, 1)
         );
 
         endingBalance = calcEndOfDayBalance(
           startingBalance,
-          allBillsBeforeAndOnDate,
+          allBillsBeforeAndOnDate
         );
 
         // Check to see if its same month or not
         if (dateFns.isSameMonth(dayIteration, monthStart)) {
-          currentMonthCssClass = '';
+          currentMonthCssClass = "";
 
           // Is date currently selected?
           selectedDateCssClass = dateFns.isSameDay(dayIteration, selectedDate)
-            ? 'selected-date'
-            : '';
+            ? "selected-date"
+            : "";
           dayComponentToRender = (
             <Day
               className={`day ${currentMonthCssClass} ${selectedDateCssClass}`}
@@ -75,7 +75,7 @@ class DaysOfMonth extends Component {
             />
           );
         } else {
-          currentMonthCssClass = 'not-current-month';
+          currentMonthCssClass = "not-current-month";
           dayComponentToRender = (
             <Day
               className={`day ${currentMonthCssClass} ${selectedDateCssClass}`}
@@ -98,7 +98,7 @@ class DaysOfMonth extends Component {
       rows.push(
         <div className="row" key={`row day ${dayIteration}`}>
           {days}
-        </div>,
+        </div>
       );
 
       days = [];
@@ -107,11 +107,9 @@ class DaysOfMonth extends Component {
     //<div className="day-container">{rows}</div>;
   }
 
-  componentDidUpdate() {
+  componentDidUpdate() {}
 
-  }
-
-  handleDateClick = (dateToParse) => {
+  handleDateClick = dateToParse => {
     return this.props.onDateClick(dateFns.parse(dateToParse));
   };
 
