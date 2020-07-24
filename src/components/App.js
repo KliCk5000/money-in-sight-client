@@ -4,19 +4,21 @@ import Header from "./Header";
 import LandingPage from "./LandingPage";
 import LoginPage from "./LoginPage";
 import MainPage from "./MainPage";
+import Footer from "./Footer";
 
 class App extends Component {
   state = {};
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Router>
           <Header />
           <Route exact path="/" component={LandingPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/main" component={MainPage} />
+          <Footer />
         </Router>
-      </div>
+      </React.Fragment>
     );
   }
 }

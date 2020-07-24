@@ -57,6 +57,7 @@ section:nth-child(even) {
   background-color: #ddd;
 }
 
-main {
-  margin-top: 50px;
+#root {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }

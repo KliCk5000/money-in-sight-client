@@ -18,11 +18,11 @@ import interactionPlugin from "@fullcalendar/interaction";
 class MainPage extends Component {
   state = {};
 
-  addTransactionSubmit = values => {
+  addTransactionSubmit = (values) => {
     let selectedDate = this.props.calendar.selectedDate;
     // We need to add the currently selected date to transaction
     let completedTransaction = Object.assign({}, values, {
-      date: selectedDate
+      date: selectedDate,
     });
 
     this.props.addTransaction(completedTransaction);
@@ -38,7 +38,7 @@ class MainPage extends Component {
             header={{
               left: "prev,next today",
               center: "title",
-              right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+              right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
             }}
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             ref={this.calendarComponentRef}
@@ -49,13 +49,12 @@ class MainPage extends Component {
           <Transactions />
           <AddTransactionForm onSubmit={this.addTransactionSubmit} />
         </main>
-        <footer role="contentinfo">Created by Nick Dean</footer>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return state;
 };
 

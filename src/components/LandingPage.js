@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../stylesheets/LandingPage.css";
 
 const wireframe = (
-  <div>
+  <React.Fragment>
     <main role="main">
       <div role="banner" className="main-header">
         <div className="bannerText">
@@ -35,8 +35,7 @@ const wireframe = (
         </Link>
       </section>
     </main>
-    <footer role="contentinfo">Created by Nick Dean</footer>
-  </div>
+  </React.Fragment>
 );
 
 class LandingPage extends Component {
